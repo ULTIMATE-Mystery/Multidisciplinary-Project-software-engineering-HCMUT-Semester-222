@@ -1,2 +1,2 @@
-# Multidisciplinary-Project-software-engineering-HCMUT-Semester-222
-Multidisciplinary Project (software engineering) HCMUT Semester 222
+# Multidisciplinary Project: Software Engineering HCMUT Semester 222
+Multidisciplinary Project: Software Engineering HCMUT Semester 222
