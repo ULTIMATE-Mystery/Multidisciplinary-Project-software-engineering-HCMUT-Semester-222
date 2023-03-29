@@ -11,6 +11,7 @@ import ActivityIcon from './thunnder-removebg-preview.png'
 import SettingIcon from './setting.png'
 import DataLog from './Charts.png'
 import Avatar from './padoruChris.jpg'
+import Snack from './snack-icon.png'
 export{
     WineImage,
     PoinsettiaImage,
@@ -24,5 +25,6 @@ export{
     ActivityIcon,
     SettingIcon,
     DataLog,
-    Avatar
+    Avatar,
+    Snack
 }

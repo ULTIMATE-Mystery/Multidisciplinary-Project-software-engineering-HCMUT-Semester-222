@@ -13,6 +13,7 @@ import {
 import Chart from './Chart'
 import ControlDevices from './ControlDevices'
 import { Dimensions } from "react-native";
+import Footer from '../Footer/Footer.js'
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 

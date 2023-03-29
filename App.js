@@ -10,6 +10,7 @@ import MyStack from './Navigator'
 // You can import from local files
 import { Card } from 'react-native-paper';
 import { Dimensions } from "react-native";
+import Datalog from './components/Datalog/Datalog';
 const screenHeight = Dimensions.get("window").height;
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         style={{height:screenHeight}}
         >
         <MyStack/>
+        {/* <Datalog/> */}
         <Footer/>
         </LinearGradient>
     </View>
