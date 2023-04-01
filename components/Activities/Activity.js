@@ -19,7 +19,7 @@ export default function Activity({activity}) {
     </View>
     <View style={styles.divContent}>
     {activity.img&&<Image source={activity.img} style={styles.imgPlant}></Image>}
-        <Text style={{width: '84%'}}>{activity.content}</Text>
+        <Text style={{width: '84%', paddingRight: 15, paddingLeft: 8}}>{activity.content}</Text>
     </View>
   </View>
   )

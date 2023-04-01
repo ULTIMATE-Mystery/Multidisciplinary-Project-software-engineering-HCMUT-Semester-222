@@ -3,6 +3,7 @@ import React from 'react'
 import { Dimensions } from "react-native";
 import { SnowIcon,HumidityIcon, LightIcon,Avatar   } from '../../assets';
 import Activity from './Activity';
+import Footer from '../Footer/Footer';
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 

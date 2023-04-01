@@ -10,29 +10,40 @@ const devices = [
     key: 1,
     url: SnowIcon,
     device: 'Temperature',
+    route: "Report"
+
   },
   {
     key: 2,
     url: HumidityIcon,
     device: 'Humidity',
+    route: "Report"
+
   },
   {
     key: 3,
     url: LightIcon,
     device: 'Light intensity',
+    route: "Report"
+
   },
   {
     key: 4,
     url: Avatar,
     device: 'Plant\'s condition',
+    route: "PlantCondition"
   },
 ]
+import {useNavigation} from '@react-navigation/native';
+
 export default function Datalog() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.ctnDtl}>
       {
         devices.map((device)=>(
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate(device.route)}>
 
       <View style={styles.ctnItemDtl}>
         <View style={styles.itemDtl}>

@@ -16,12 +16,14 @@ import { Dimensions } from "react-native";
 import Footer from '../Footer/Footer.js'
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
+// import {useNavigation} from '@react-navigation/native';
 
 
 export default Home = (props) => {
   const {navigation} = props;
+  // const navigation = useNavigation();
 
-  return <View>
+  return <View style={{height: "100%", position: "relative"}}>
         <View style={styles.header}>
             <View style={styles.dayNow}>
                 <Text style={styles.textStyle}>Good Morning</Text>
@@ -42,6 +44,7 @@ export default Home = (props) => {
         </View>
         <Chart/>
         <ControlDevices navigation={navigation}/>
+        <Footer/>
   </View>
 }
 

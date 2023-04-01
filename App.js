@@ -24,7 +24,7 @@ export default function App() {
         >
         <MyStack/>
         {/* <Datalog/> */}
-        <Footer/>
+        {/* <Footer/> */}
         </LinearGradient>
     </View>
   );

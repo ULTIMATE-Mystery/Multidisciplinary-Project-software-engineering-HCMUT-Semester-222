@@ -3,6 +3,7 @@ import React from 'react'
 import { Dimensions } from "react-native";
 import { SnowIcon,HumidityIcon, LightIcon,Avatar   } from '../../assets';
 import Activity from '../Activities/Activity';
+import Footer from '../Footer/Footer';
 // import Activity from './Activity';
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
@@ -22,7 +23,7 @@ const ActivitiesPlant = [
         {
         key: 2,
             hour: "17:31",
-            content: "Strawberry plant showing signs of  ple  fdsa bfb df fd ; l; mdisease: Sphaerotheca macularis",
+            content: "Strawberry plant showing signs of disease: macularis",
           img: Avatar
 
         },
