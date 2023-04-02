@@ -1,66 +1,54 @@
-import React from 'react'
-
-import{
-  View,
-  Text,
-  StyleSheet,
-  FlatList
-} from 'react-native'
-import Chart from '../Home/Chart'
-import { Dimensions } from "react-native";
+import React, {useState} from 'react';
+import{View, Text, StyleSheet, Image, Flatlist, TouchableOpacity} from 'react-native'
+import Welcome from '../../assets/welcome.png'
+import {Dimensions} from "react-native";
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
 export default Authenticate = (props) => {
-  const months = [
-    {
-      key: 1,
-      value: 'Jan'
-    },
-    {
-      key: 2,
-      value: 'Feb'
-    },
-    {
-      key: 3,
-      value: 'Mar'
-    },
-    {
-      key: 4,
-      value: 'April'
-    },
-  ]
-  return <View>
-      <FlatList
-        data={months}
-        renderItem={({item}) =><View style={styles.textContainer}><Text style={styles.textStyle}>{item.value}</Text></View>}
-        keyExtractor={item=>item.key}
-        contentContainerStyle={styles.monthContainer}
-      />
-      <Chart/>
-  </View>
+  const {navigation} = props
+  return (<View>
+  <View style={styles.root}>
+    <Image source={Welcome} style={styles.logo} resizemode="contain" />
+     </View>
+    <View style={styles.Container}>
+        <TouchableOpacity style={styles.button} 
+        onPress={() => navigation.navigate('Home') }>
+    <Text>Sign In</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} 
+        onPress={() => navigation.navigate('Home') 
+    }>
+    <Text>Sign Out</Text>
+        </TouchableOpacity>
+
+      </View> 
+      </View>);       
 }
+        
 
 const styles = StyleSheet.create({
-    monthContainer:{
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginBottom: 40,
-      marginTop: 50,
+    root: {
+      alignItems: 'center',
+      padding: 5,
     },
-    textStyle:{
-      color: '#000',
-      fontWeight: 'bold',
-      fontSize: 20,
+    logo: {
+      width: '100%',
+      height: 375,
     },
-    textContainer:{
-      width: screenWidth*1/7,
-      height: 30,
-      marginLeft:5,
-      marginRight:5,
-      backgroundColor:'#FFF5F5',
-      borderRadius: 10,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-})
+    Container: {
+      justifyContent: 'space-between'
+    },
+
+    button: {
+    alignItems: 'center',
+      width: "100%",
+    height: 25,
+    backgroundColor: "#FFF5F5",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 15,
+    padding: 10,
+  },
+});
