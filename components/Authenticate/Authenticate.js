@@ -14,13 +14,13 @@ export default Authenticate = (props) => {
     <View style={styles.Container}>
         <TouchableOpacity style={styles.button} 
         onPress={() => navigation.navigate('Home') }>
-    <Text>Sign In</Text>
+    <Text style={styles.Text}>Sign In</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} 
         onPress={() => navigation.navigate('Home') 
     }>
-    <Text>Sign Out</Text>
+    <Text style={styles.Text}>Sign Up</Text>
         </TouchableOpacity>
 
       </View> 
@@ -38,17 +38,28 @@ const styles = StyleSheet.create({
       height: 375,
     },
     Container: {
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      justifyContent: 'center',
     },
 
     button: {
+    backgroundColor: '#07D24C',
+    borderWidth: 0,
+    color: '#FFFFFF',
+    borderColor: '#7DE24E',
+    height: 40,
     alignItems: 'center',
-      width: "100%",
-    height: 25,
-    backgroundColor: "#FFF5F5",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 15,
-    padding: 10,
+    borderRadius: 30,
+    marginLeft: 35,
+    marginRight: 35,
+    marginTop: 20,
+    marginBottom: 20,
+    
   },
+
+    Text: {
+      flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+    }
 });

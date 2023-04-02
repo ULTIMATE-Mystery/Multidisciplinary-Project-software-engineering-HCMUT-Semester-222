@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home'
 import PlantCondition from './components/PlantCondition/PlantCondition';
 import Authenticate from './components/Authenticate/Authenticate'
+import Pumper from './components/ControlDevices/Pumper'
 import Report from './components/Report/Report'
 
 const Stack = createNativeStackNavigator();
@@ -89,6 +90,19 @@ const MyStack = () => {
                 <Stack.Screen name="PlantCondition" component={PlantCondition} 
         options={{
             title: 'Plant\'s Condition',
+            headerStyle: {
+              backgroundColor: 'transparent',
+            },
+            headerTitleAlign: 'center',
+            headerTintColor: '#000',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+          },}}
+        />
+
+        <Stack.Screen name="Pumper" component={Pumper} 
+        options={{
+            title: 'Control Device',
             headerStyle: {
               backgroundColor: 'transparent',
             },
