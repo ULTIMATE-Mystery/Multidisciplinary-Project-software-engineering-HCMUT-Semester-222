@@ -24,19 +24,24 @@ const devices = [
     key: 1,
     url: HumidityIcon,
     device: 'Pumper',
-    value: '70%'
+    value: '70%',
+    route: 'Pumper'
+
   },
   {
     key: 2,
     url: LightIcon,
     device: 'Light',
-    value: '78 Lux'
+    value: '78 Lux',
+    route: 'Light'
+
   },
   {
     key: 3,
     url: SnowIcon,
     device: 'Air Conditioner',
-    value: '24°C'
+    value: '24°C',
+    route: 'AirConditioner'
   },
 ]
 export default ControlDevices = (props) => {

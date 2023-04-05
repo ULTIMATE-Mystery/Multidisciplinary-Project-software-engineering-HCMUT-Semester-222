@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Image,
   Text,
   View,
-  StyleSheet,Button
+  StyleSheet,Button, FlatList
 } from 'react-native'
 
 import {
@@ -13,15 +13,60 @@ import {
 import Chart from './Chart'
 import ControlDevices from './ControlDevices'
 import { Dimensions } from "react-native";
-import Footer from '../Footer/Footer.js'
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
-// import {useNavigation} from '@react-navigation/native';
-
-
 export default Home = (props) => {
+
+  const data = [{
+    key: 1,
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Rainy Days"] // optional
+  },
+  {
+    key: 2,
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Temperature"] // optional
+  },
+  {
+    key: 3,
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Humidity"] // optional
+  },
+  {
+    key: 4,
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Light"] // optional
+  }
+];
   const {navigation} = props;
-  // const navigation = useNavigation();
 
   return <View style={{height: "100%", position: "relative"}}>
         <View style={styles.header}>
@@ -42,21 +87,34 @@ export default Home = (props) => {
                 <Text style={styles.textStyle}>Ho Chi Minh City</Text>
             </View>
         </View>
-        <Chart/>
+        {/* <Chart/> */}
+
+        <FlatList
+      data={data}
+      renderItem={({item}) => <Chart key={item.key} data={item} navigation={navigation}/>}
+      initialScrollIndex={0}
+      keyExtractor={item=>item.key}
+      contentContainerStyle={styles.chartsContainer}
+      horizontal
+      showsHorizontalScrollIndicator={true}
+    />
         <ControlDevices navigation={navigation}/>
-        <Footer/>
   </View>
 }
 
 
 
 const styles = StyleSheet.create({
+  chartsContainer:{
+    borderRadius: 5,
+    // justifyContent: 'center'
+  },
   header:{
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: screenWidth,
     marginTop:10,
-    height: screenHeight*0.7/8
+    height: screenHeight*0.6/8
   },
   dayNow:{
     marginBottom: 10

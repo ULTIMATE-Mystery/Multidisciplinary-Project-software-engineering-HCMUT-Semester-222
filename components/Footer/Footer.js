@@ -1,56 +1,48 @@
-import {
-  View,
-  Image,
-  StyleSheet,
-  TouchableOpacity
-} from 'react-native'
+import * as React from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+export default function Footer({ state, descriptors, navigation }) {
+  return (
+    <View style={{ flexDirection: 'row',
+     justifyContent: "space-around", paddingVertical: 5,
+     backgroundColor: "transparent", alignItems: "center"}}>
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
 
-import {
-  HomeIcon,
-  ActivityIcon,
-  DataLog,
-  SettingIcon
-} from '../../assets/index'
-import {useNavigation} from '@react-navigation/native';
+        const isFocused = state.index === index;
 
-import { Dimensions } from "react-native";
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
-export default Footer = () => {
-  const navigation = useNavigation();
-  return <View style={styles.navigateContainer}>
-    <TouchableOpacity onPress={()=> navigation.navigate("Home")}>
-      
-      <Image source={HomeIcon} style={styles.imageStyle}/>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=> navigation.navigate("Activities")}>
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+          });
 
-    <Image source={ActivityIcon} style={styles.imageStyle}/>
-      </TouchableOpacity>
-      <TouchableOpacity  onPress={()=> navigation.navigate("Datalog")}>
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
 
-    <Image source={DataLog} style={styles.imageStyle}/>
-      </TouchableOpacity>
-    <TouchableOpacity onPress={()=> navigation.navigate("Setting")}>
 
-    <Image source={SettingIcon} style={styles.imageStyle}/>
-    </TouchableOpacity>
-
-  </View>
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            // style={{ flex: 1}}
+          >
+            <View style={{padding: 5}}>
+              <Image style={isFocused ? {width: 45, height: 45} : {width: 30, height: 30}} source={label}/>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-  navigateContainer:{
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: screenWidth,
-    height: screenHeight*0.5/8
-  },
-  imageStyle:{
-    width: 30,
-    height:30
-  }
-})

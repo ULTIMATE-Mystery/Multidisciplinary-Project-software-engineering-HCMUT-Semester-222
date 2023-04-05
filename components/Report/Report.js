@@ -8,10 +8,12 @@ import{
 } from 'react-native'
 import Chart from '../Home/Chart'
 import { Dimensions } from "react-native";
+import ChartReport from './ChartReport';
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
 export default Report = (props) => {
+  const {navigation, route} = props;
   const months = [
     {
       key: 1,
@@ -37,7 +39,7 @@ export default Report = (props) => {
         keyExtractor={item=>item.key}
         contentContainerStyle={styles.monthContainer}
       />
-      <Chart/>
+      <ChartReport name={route.params.name}/>
   </View>
 }
 

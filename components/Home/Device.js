@@ -20,7 +20,7 @@ export default Device = (props) => {
   const {navigation} = props
   return <View style={styles.deviceContainer}>
     <TouchableOpacity onPress={() =>
-            navigation.navigate('Pumper', {name: 'Jane'})
+            navigation.navigate(data.route, {name: 'Jane'})
     }>
       <View style={styles.headerDevice}>
         <Image source={data.url} style={styles.deviceStyle}>

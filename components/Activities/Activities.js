@@ -56,18 +56,18 @@ const ActivitiesAll = [
   ]
 },
 ]
-export default function Activities() {
+export default Activities =() =>  {
   return (
     <ScrollView>
 
     <View style={styles.ctnAtvt}>
       {
           ActivitiesAll.map((ActivitiesOne)=>(
-              <View key={ActivitiesOne.key} style={{marginBottom: 20}}>
+              <View key={ActivitiesOne.key} style={{marginBottom: 20}} >
             <Text style={{textAlign: 'center', fontSize: 18, fontWeight: "600"}}>{ActivitiesOne.date}</Text>
             {
                 ActivitiesOne.activities.map((activity)=>(
-                    <Activity activity={activity}/>
+                    <Activity activity={activity} key={activity.key}/>
                     ))
                 }
           </View>

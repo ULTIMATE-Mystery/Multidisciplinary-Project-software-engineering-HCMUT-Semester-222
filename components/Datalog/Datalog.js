@@ -1,49 +1,44 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Dimensions } from "react-native";
-import { SnowIcon,HumidityIcon, LightIcon,Avatar   } from '../../assets';
+import { SnowIcon,HumidityIcon, LightIcon,Avatar, Datalog2, Datalog3, Datalog4   } from '../../assets';
+import {useNavigation} from '@react-navigation/native';
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 
 const devices = [
   {
-    key: 1,
     url: SnowIcon,
     device: 'Temperature',
-    route: "Report"
+    route: "Temperature"
 
   },
   {
-    key: 2,
-    url: HumidityIcon,
+    url: Datalog2,
     device: 'Humidity',
-    route: "Report"
+    route: "Humidity"
 
   },
   {
-    key: 3,
-    url: LightIcon,
+    url: Datalog3,
     device: 'Light intensity',
-    route: "Report"
+    route: "LightIntensity"
 
   },
   {
-    key: 4,
-    url: Avatar,
+    url: Datalog4,
     device: 'Plant\'s condition',
     route: "PlantCondition"
   },
 ]
-import {useNavigation} from '@react-navigation/native';
-
-export default function Datalog() {
-  const navigation = useNavigation();
+export default Datalog = (props) => {
+  const {navigation} = props;
 
   return (
     <View style={styles.ctnDtl}>
       {
-        devices.map((device)=>(
-          <TouchableOpacity onPress={()=> navigation.navigate(device.route)}>
+        devices.map((device,index)=>(
+          <TouchableOpacity onPress={()=> navigation.navigate(device.route, {name: device.device})} key={index}>
 
       <View style={styles.ctnItemDtl}>
         <View style={styles.itemDtl}>

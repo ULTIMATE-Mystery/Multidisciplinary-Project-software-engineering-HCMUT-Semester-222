@@ -2,15 +2,15 @@ import * as React from 'react';
 import { Text, View, StyleSheet,ScrollView,FlatList,Image} from 'react-native';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
-import Authenticate from './components/Authenticate/Authenticate'
+import Authenticate from './components/Login/Login'
 import Home from './components/Home/Home'
 import Report from './components/Report/Report'
 import Footer from './components/Footer/Footer'
-import MyStack from './Navigator'
 // You can import from local files
 import { Card } from 'react-native-paper';
 import { Dimensions } from "react-native";
 import Datalog from './components/Datalog/Datalog';
+import AuthNavigator from './components/Navigation/AuthNavigator';
 const screenHeight = Dimensions.get("window").height;
 
 export default function App() {
@@ -22,9 +22,7 @@ export default function App() {
         locations={[0,0.3,1]}
         style={{height:screenHeight}}
         >
-        <MyStack/>
-        {/* <Datalog/> */}
-        {/* <Footer/> */}
+          <AuthNavigator/>
         </LinearGradient>
     </View>
   );

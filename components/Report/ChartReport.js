@@ -20,41 +20,23 @@ import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
-// const data = {
-//   labels: ["January", "February", "March", "April", "May", "June"],
-//   datasets: [
-//     {
-//       data: [20, 45, 28, 80, 99, 43],
-//       color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-//       strokeWidth: 2 // optional
-//     }
-//   ],
-//   legend: ["Rainy Days"] // optional
-// };
-
-const records = [
-  {
-    key: 1,
-    value:'temperature'
-  },
-  {
-    key: 2,
-    value:'light'
-  },
-  {
-    key: 3,
-    value:'humidity'
-  },
-  {
-    key: 4,
-    value:'strawberry status'
-  },
-]
-export default Chart = ({data}) => {
+export default Chart = ({name}) => {
+    const data = {
+        labels: ["January", "February", "March", "April", "May", "June"],
+        datasets: [
+          {
+            data: [20, 45, 28, 80, 99, 43],
+            color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+            strokeWidth: 2 // optional
+          }
+        ],
+        legend: [name] // optional
+      };
+      
     return <View style={styles.chartContainer}>
           <LineChart
             data={data}
-            width={screenWidth-30}
+            width={screenWidth}
             height={screenHeight*2.5/8}
             verticalLabelRotation={30}
             chartConfig={chartConfig}
@@ -87,8 +69,8 @@ const chartConfig={
 const styles = StyleSheet.create({
     chartContainer:{
     justifyContent: 'center',
-    // borderTopLeftRadius: 20,
-    // borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     marginRight: 15,
     marginLeft: 15,
     overflow: "hidden"

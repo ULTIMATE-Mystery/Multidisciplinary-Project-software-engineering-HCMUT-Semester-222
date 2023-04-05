@@ -1,10 +1,7 @@
-import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Dimensions } from "react-native";
-import { SnowIcon,HumidityIcon, LightIcon,Avatar   } from '../../assets';
+import React from 'react';
+import { Dimensions, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Avatar } from '../../assets';
 import Activity from '../Activities/Activity';
-import Footer from '../Footer/Footer';
-// import Activity from './Activity';
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 
@@ -104,8 +101,8 @@ export default function PlantCondition() {
               <View key={ActivityPlant.key} style={{marginBottom: 20}}>
             <Text style={styles.dateAtvt}>{ActivityPlant.date}</Text>
             {
-                ActivityPlant.activities.map((activity)=>(
-                    <Activity activity={activity}/>
+                ActivityPlant.activities.map((activity, index)=>(
+                    <Activity activity={activity} key={index}/>
                     ))
                 }
           </View>
