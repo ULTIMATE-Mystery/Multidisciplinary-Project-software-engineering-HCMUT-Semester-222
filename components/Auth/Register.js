@@ -47,7 +47,7 @@ export default Login = (props) => {
                 placeholder='Key...'
                 />
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("Login")}>
           <View style={{backgroundColor: "#fff", borderRadius: 10, padding: 15, marginTop: 30}}
         >
         <Image source={ArrowAuth} style={{width: 40, height: 40, padding: 10}}/>

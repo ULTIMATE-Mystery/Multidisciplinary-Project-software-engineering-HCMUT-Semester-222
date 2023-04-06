@@ -1,8 +1,9 @@
-import { View, Text,StyleSheet, Image } from 'react-native'
+import { View, Text,StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { EditIcon, FbIcon, ImgSetting, LockIcon } from '../../assets'
-
+import useGlobalAuthContext from "../../context/AuthContext"
 export default function Settings() {
+  const {setUser} = useGlobalAuthContext();
   return (
     <View style={styles.ctnSettingS}>
       <View>
@@ -20,7 +21,8 @@ export default function Settings() {
         <Text style={styles.itemRight}>Send feedbacks</Text>
       </View>
       </View>
-      <View >
+      <View>
+        <TouchableOpacity onPress={()=>setUser(null)}><Text style={ styles.itemLogOut}>Logout</Text></TouchableOpacity>
           <Image source={ImgSetting} style={{width: "100%", height: 240, borderRadius: 20}}/>
       </View>
     </View>
@@ -54,5 +56,14 @@ itemRight: {
   letterSpacing: 1.4,
   fontSize: 20,
   textDecorationLine: 'underline'
+},
+itemLogOut: {
+  fontWeight: "bold",
+  color: "#090805",
+  letterSpacing: 1.4,
+  fontSize: 30,
+  textDecorationLine: 'underline',
+  textAlign: 'center',
+  marginBottom: 10
 }
 })

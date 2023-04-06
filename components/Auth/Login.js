@@ -3,13 +3,18 @@ import{View, Text, StyleSheet, Image, Flatlist, TouchableOpacity, TextInput} fro
 import Welcome from '../../assets/welcome.png'
 import {Dimensions} from "react-native";
 import { ArrowAuth, LockIcon, PersonIcon, StraberryLogo } from '../../assets';
+import useGlobalAuthContext from "../../context/AuthContext"
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
 export default Login = (props) => {
   const {navigation} = props
+  const {setUser} = useGlobalAuthContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const handleLogin = ()=>{
+setUser({username, password})
+  }
   return (
   <View style={{height: screenHeight}}>
     <View style={styles.root}>
@@ -36,7 +41,7 @@ export default Login = (props) => {
                 placeholder='Password...'
                 />
           </View>
-          <TouchableOpacity onPress={()=>navigation.navigate("BottomTabNavigator")}>
+          <TouchableOpacity onPress={handleLogin}>
           <View style={{backgroundColor: "#fff", borderRadius: 10, padding: 15, marginTop: 30}}
         >
         <Image source={ArrowAuth} style={{width: 50, height: 50, padding: 10}}/>

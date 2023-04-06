@@ -5,7 +5,7 @@ import Auth from '../Auth';
 import BottomTabNavigator from './FooterNavigator';
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
-
+import userGlobalAuthContext from "../../context/AuthContext"
 const Stack = createNativeStackNavigator();
 const MyTheme = {
     ...DefaultTheme,
@@ -15,10 +15,11 @@ const MyTheme = {
     },
   };
 function AuthNavigator() {
+  const {user} = userGlobalAuthContext(); 
   return (
     <NavigationContainer theme={MyTheme}>
-    <Stack.Navigator initialRouteName={"Auth"}>
-      <Stack.Screen
+      <Stack.Navigator initialRouteName={ !user ? "Auth" : "BottomTabNavigator"}> 
+      {!user ? <><Stack.Screen
         name={"Auth"}
         component={Auth}
         options={{headerShown: false}}
@@ -38,7 +39,7 @@ function AuthNavigator() {
             fontSize: 25
         },}}
       />
-              <Stack.Screen
+        <Stack.Screen
         name={"Register"}
         component={Register}
         options={{
@@ -52,12 +53,12 @@ function AuthNavigator() {
             fontWeight: 'bold',
             fontSize: 25
         },}}
-      />
+      /></>:
       <Stack.Screen
         name={"BottomTabNavigator"}
         component={BottomTabNavigator}
         options={{headerShown: false}}
-      />
+      />}
     </Stack.Navigator>
     </NavigationContainer>
   );

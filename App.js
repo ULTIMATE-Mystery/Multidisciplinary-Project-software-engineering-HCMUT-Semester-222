@@ -1,20 +1,16 @@
-import * as React from 'react';
-import { Text, View, StyleSheet,ScrollView,FlatList,Image} from 'react-native';
-import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
-import Authenticate from './components/Login/Login'
-import Home from './components/Home/Home'
-import Report from './components/Report/Report'
-import Footer from './components/Footer/Footer'
+import * as React from 'react';
+import { StyleSheet, View } from 'react-native';
 // You can import from local files
-import { Card } from 'react-native-paper';
 import { Dimensions } from "react-native";
-import Datalog from './components/Datalog/Datalog';
 import AuthNavigator from './components/Navigation/AuthNavigator';
+import { AuthProvider } from './context/AuthContext';
 const screenHeight = Dimensions.get("window").height;
 
 export default function App() {
   return (
+    <AuthProvider>
+
     <View style={styles.container}>
         <LinearGradient
         // Background Linear Gradient
@@ -25,6 +21,7 @@ export default function App() {
           <AuthNavigator/>
         </LinearGradient>
     </View>
+    </AuthProvider>
   );
 }
 
